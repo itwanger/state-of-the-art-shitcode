@@ -21,126 +21,121 @@ _Read this in other languages:_
 
 ## 准则
 
-### 💩 以一种代码已经被混淆的方式命名变量
+### 💩 以一种容易造成代码混淆的方式命名变量
 
-如果我们键入的东西越少，那么就有越多的时间去思考代码逻辑等问题。
+命名越短，就需要越多的时间去思考代码逻辑等问题。
 
 _Good 👍🏻_
 
-```javascript
-let a = 42;
+```java
+int a = 42;
 ```
 
 _Bad 👎🏻_
 
-```javascript
-let age = 42;
+```java
+int age = 42;
 ```
 
-### 💩 变量/函数混合命名风格
+### 💩 变量/方法命名风格不统一
 
-为不同庆祝一下。
+为风格不统一干杯。
 
 _Good 👍🏻_
 
-```javascript
-let wWidth = 640;
-let w_height = 480;
+```java
+int wWidth = 640;
+int w_height = 480;
 ```
 
 _Bad 👎🏻_
 
-```javascript
-let windowWidth = 640;
-let windowHeight = 480;
+```java
+int windowWidth = 640;
+int windowHeight = 480;
 ```
 
-### 💩 不要写注释
+### 💩 不写注释
 
-反正没人会读你的代码。
+反正没人能读懂你的代码。
 
 _Good 👍🏻_
 
-```javascript
-const cdr = 700;
+```java
+int cdr = 700;
 ```
 
 _Bad 👎🏻_
 
-更多时候，评论应该包含一些“为什么”，而不是一些“是什么”。如果“什么”在代码中不清楚，那么代码可能太混乱了。
+注释应该包含一些“为什么”，而不是一些“是什么”。如果代码连是“什么”都表达不清楚，那代码也太烂了。
 
-```javascript
-// 700ms的数量是根据UX A/B测试结果进行经验计算的。
-// @查看: <详细解释700的一个链接>
-const callbackDebounceRate = 700;
+```java
+// 700ms 的数量是从 UX A/B 测试结果中得到的一个经验值。
+// @查看: <详细解释 700 的一个链接>
+int callbackDebounceRate = 700;
 ```
 
 ### 💩 使用母语写注释
 
-如果您违反了“无注释”原则，那么至少尝试用一种不同于您用来编写代码的语言来编写注释。如果你的母语是英语，你可能会违反这个原则。
+如果你的母语是英语，那么请忽略这条准则。
 
 _Good 👍🏻_
 
-```javascript
+```java
 // Закриваємо модальне віконечко при виникненні помилки.
 toggleModal(false);
 ```
 
 _Bad 👎🏻_
 
-```javascript
+```java
 // 隐藏错误弹窗
 toggleModal(false);
 ```
 
-### 💩 尽可能混合不同的格式
+PS：如果英语书写能力不是很强的话，建议还是用母语吧。毕竟说清楚总比说不清楚要强。
 
-为不同庆祝一下。
+### 💩 声明变量的风格不统一
+
+再次为风格不统一干杯。
 
 _Good 👍🏻_
 
-```javascript
-let i = ['tomato', 'onion', 'mushrooms'];
-let d = [ "ketchup", "mayonnaise" ];
+```java
+String [] i1 = {"沉", "默", "王", "二"};
+String i2 [] = {"沉", "默", "王", "三"};
 ```
 
 _Bad 👎🏻_
 
-```javascript
-let ingredients = ['tomato', 'onion', 'mushrooms'];
-let dressings = ['ketchup', 'mayonnaise'];
+```java
+String [] wanger = {"沉", "默", "王", "二"};
+String wangsan [] = {"沉", "默", "王", "三"};
 ```
 
 ### 💩 尽可能把代码写成一行
 
 _Good 👍🏻_
 
-```javascript
-document.location.search.replace(/(^\?)/,'').split('&').reduce(function(o,n){n=n.split('=');o[n[0]]=n[1];return o},{})
+```java
+IntStream.range(1, 5).boxed().map(i -> { System.out.print("Happy Birthday "); if (i == 3) return "dear NAME"; else return "to You"; }).forEach(System.out::println);
 ```
 
 _Bad 👎🏻_
 
-```javascript
-document.location.search
-  .replace(/(^\?)/, '')
-  .split('&')
-  .reduce((searchParams, keyValuePair) => {
-    keyValuePair = keyValuePair.split('=');
-    searchParams[keyValuePair[0]] = keyValuePair[1];
-    return searchParams;
-  },
-  {}
-)
+```java
+for (int i = 1; i < 5; i++) {
+    System.out.println("Happy Birthday " + (i == 3 ? "dear NAME" : "to you"));
+}
 ```
 
-### 💩 不要处理错误
+### 💩 对错误信息不管不顾
 
-无论何时发现错误，都没有必要让任何人知道它。没有日志，没有错误弹框。
+无论什么时候发现错误，都没有必要让其他人知道。
 
 _Good 👍🏻_
 
-```javascript
+```java
 try {
   // 意料之外的情况。
 } catch (error) {
@@ -150,242 +145,190 @@ try {
 
 _Bad 👎🏻_
 
-```javascript
+```java
 try {
   // 意料之外的情况。
 } catch (error) {
-  setErrorMessage(error.message);
   // and/or
   logError(error);
 }
 ```
 
-### 💩 广泛使用全局变量
+### 💩 使用大量的全局变量
 
 全球化的原则。
 
 _Good 👍🏻_
 
-```javascript
-let x = 5;
+```java
+int x = 5;
 
-function square() {
-  x = x ** 2;
+void multi() {
+  x = x * 2;
 }
 
-square(); // 现在x是25
+multi(); // 现在 x 是 10
 ```
 
 _Bad 👎🏻_
 
-```javascript
-let x = 5;
+```java
+int x = 5;
 
-function square(num) {
-  return num ** 2;
+int multi(int num) {
+  return num * 2;
 }
 
-x = square(x); // 现在x是25
+x = multi(x); // 现在 x 是 10
 ```
 
-### 💩 创建你不会使用的变量
+### 💩 声明根本不会使用的变量
 
-以防万一。
+万一以后用了呢？以备不时之需。
 
 _Good 👍🏻_
 
-```javascript
-function sum(a, b, c) {
-  const timeout = 1300;
-  const result = a + b;
+```java
+int sum(int a, int b, int c) {
+  int timeout = 1300;
+  int result = a + b;
   return a + b;
 }
 ```
 
 _Bad 👎🏻_
 
-```javascript
-function sum(a, b) {
+```java
+int sum(int a, int b) {
   return a + b;
 }
 ```
 
-### 💩 如果语言允许，不要指定类型和/或不执行类型检查。
+### 💩 如果条件允许的话，从不指定类型。
 
 _Good 👍🏻_
 
-```javascript
-function sum(a, b) {
-  return a + b;
-}
-
-// 在这里享受没有注释的快乐
-const guessWhat = sum([], {}); // -> "[object Object]"
-const guessWhatAgain = sum({}, []); // -> 0
+```java
+// 享受便捷的快乐
+List list = new ArrayList();
+list.add("沉默王二");
+list.add(18);
 ```
 
 _Bad 👎🏻_
 
-```javascript
-function sum(a: number, b: number): ?number {
-  // 当我们在JS中不做置换和/或流类型检查时，覆盖这种情况。
-  if (typeof a !== 'number' && typeof b !== 'number') {
-    return undefined;
-  }
-  return a + b;
-}
+```java
+List<String> nameList = new ArrayList<String>();
 
-// 这个应该在转换/编译期间失败。
-const guessWhat = sum([], {}); // -> undefined
+// 编译出错
+nameList.add(18);
 ```
 
-### 💩 你应该有不能到达的代码
+### 💩 没鸟用的代码
 
-这是你的 "Plan B".
+看起来更严谨，其实很多余。
 
 _Good 👍🏻_
 
-```javascript
-function square(num) {
-  if (typeof num === 'undefined') {
-    return undefined;
-  }
-  else {
-    return num ** 2;
-  }
-  return null; // 这就是我的"Plan B".
+```java
+Integer multi(Object num) {
+    if (!(num instanceof Integer)) {
+        return null;
+    } else if (num != null) {
+        return (Integer) num * 2;
+    }
+    return null;
 }
 ```
 
 _Bad 👎🏻_
 
-```javascript
-function square(num) {
-  if (typeof num === 'undefined') {
-    return undefined;
-  }
-  return num ** 2;
+```java
+Integer multi(Object num) {
+    if (num instanceof Integer) {
+        return (Integer) num * 2;
+    }
+    return null;
 }
 ```
 
-### 💩 三角法则
-
-就像鸟巢，鸟巢，鸟巢。
+### 💩 大量的 if-else 嵌套
 
 _Good 👍🏻_
 
-```javascript
-function someFunction() {
-  if (condition1) {
-    if (condition2) {
-      asyncFunction(params, (result) => {
-        if (result) {
-          for (;;) {
-            if (condition3) {
+```java
+void someMethod(int a, int b, int c) {
+    if (a > 0) {
+        if (b > 0) {
+            if (c > 0) {
+               int result = a / b / c;
             }
-          }
         }
-      })
     }
-  }
 }
 ```
 
 _Bad 👎🏻_
 
-```javascript
-async function someFunction() {
-  if (!condition1 || !condition2) {
-    return;
-  }
-  
-  const result = await asyncFunction(params);
-  if (!result) {
-    return;
-  }
-  
-  for (;;) {
-    if (condition3) {
+```java
+void someMethod1(int a, int b, int c) {
+    if (a < 0 || b < 0 || c < 0) {
+        return;
     }
-  }
+    int result = a / b / c;
 }
 ```
 
-### 💩 混合缩进
+### 💩 参差不齐地缩进
 
-避免缩进，因为它们会使复杂的代码在编辑器中占用更多的空间。如果你不喜欢回避他们，那就和他们捣乱。
+参差不齐乃幸福本源。
 
 _Good 👍🏻_
 
-```javascript
-const fruits = ['apple',
-  'orange', 'grape', 'pineapple'];
-  const toppings = ['syrup', 'cream', 
-                    'jam', 
-                    'chocolate'];
-const desserts = [];
-fruits.forEach(fruit => {
-toppings.forEach(topping => {
-    desserts.push([
-fruit,topping]);
-    });})
+```java
+String [] wanger = {"沉", 
+        "默", "王", "二"};
+String [] wangsan = {"沉", "默", "王", "三"};
+Arrays.asList(wanger).stream().
+        forEach(System.out::println);
+Arrays.asList(wangsan).
+        stream().
+                forEach(System.out::println);
 ```
 
 _Bad 👎🏻_
 
 ```javascript
-const fruits = ['apple', 'orange', 'grape', 'pineapple'];
-const toppings = ['syrup', 'cream', 'jam', 'chocolate'];
-const desserts = [];
-
-fruits.forEach(fruit => {
-  toppings.forEach(topping => {
-    desserts.push([fruit, topping]); 
-  });
-})
+String [] wanger = {"沉", "默", "王", "二"};
+String [] wangsan = {"沉", "默", "王", "三"};
+Arrays.asList(wanger)
+        .stream()
+        .forEach(System.out::println);
+Arrays.asList(wangsan)
+        .stream()
+        .forEach(System.out::println);
 ```
 
-### 💩 不要锁住你的依赖项
+### 💩 代码行数多的方法的比少的好
 
-以非受控方式更新每个新安装的依赖项。为什么坚持使用过去的版本，让我们使用最先进的库版本。
+不要把代码逻辑分成可读的部分。
 
-_Good 👍🏻_
-
-```
-$ ls -la
-
-package.json
-```
-
-_Bad 👎🏻_
-
-```
-$ ls -la
-
-package.json
-package-lock.json
-```
-
-### 💩 函数长的比短的好
-
-不要把程序逻辑分成可读的部分。如果IDE的搜索停止，而您无法找到所需的文件或函数，该怎么办?
-
-- 一个文件中10000行代码是OK的。
-- 一个函数体1000行代码是OK的。
-- 处理许多服务(第三方和内部，也有一些工具、数据库手写ORM和jQuery滑块)在一个' service.js ' ?这是OK的。
+- 一个类中的代码行数超过 10000 行。
+- 一个方法中的代码行数超过 1000 行。
+- 一个方法里既做减法处理又做加法处理，还做乘除的处理。
 
 ### 💩 不要测试你的代码
 
-这是重复的并且不需要的工作。
+代码测试是测试工程师的事，关我屁事。
 
 ### 💩 避免代码风格统一
 
-编写您想要的代码，特别是在一个团队中有多个开发人员的情况下。这是一个“自由”的原则。
+随心所欲地编写代码，特别是在一个团队中有多个开发人员的情况下，我崇尚“自由”。
 
-### 💩 构建新项目不需要 README 文档
+### 💩 不要写文档
 
-一开始我们就应该保持。
+从一开始就不要。
 
-### 💩 保存不必要的代码
+### 💩 不要删除废弃掉的代码
 
-不要删除不用的代码，最多是注释掉。
+代码尽管已经废弃了，注释掉就行了，没必要删掉。
