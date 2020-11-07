@@ -7,18 +7,6 @@
 _Read this in other languages:_
 [_English_](https://github.com/trekhleb/state-of-the-art-shitcode)
 
-## 获取徽章
-
-如果你的仓库遵循垃圾代码书写准则，你应该用下面的"state-of-the-art shitcode" 徽章：
-
-[![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)
-
-标记徽章的源代码:
-
-```
-[![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)
-```
-
 ## 准则
 
 ### 💩 以一种容易造成代码混淆的方式命名变量
